@@ -5,7 +5,7 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 
 public class TelegramController extends TelegramLongPollingBot {
     private static final String username = "";
-    private static final String token = "1";
+    private static final String token = "";
 
 
     @Override
