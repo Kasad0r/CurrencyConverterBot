@@ -5,11 +5,11 @@ import lombok.*;
 
 import java.util.Objects;
 
-public class CurrencyEntity implements Comparable {
-    String baseCCY;
-    String ccy;
-    double buy;
-    double sale;
+final  public class CurrencyEntity {
+    private String baseCCY;
+    private String ccy;
+    private double buy;
+    private double sale;
 
     public CurrencyEntity() {
     }
@@ -21,14 +21,7 @@ public class CurrencyEntity implements Comparable {
         this.sale = sale;
     }
 
-    @Override
-    public int compareTo(Object o) {
-        return this.baseCCY.compareTo(((CurrencyEntity) o).baseCCY);
-    }
 
-    public CurrencyEntity(String baseCCY) {
-        this.baseCCY = baseCCY;
-    }
 
     @Override
     public String toString() {

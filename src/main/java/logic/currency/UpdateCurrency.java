@@ -4,7 +4,7 @@ import entity.CurrencyEntity;
 
 import java.util.*;
 
-public class UpdateCurrency extends TimerTask {
+final public class UpdateCurrency extends TimerTask {
     private static List<CurrencyEntity> currencyEntities = new ArrayList<CurrencyEntity>();
 
     public UpdateCurrency(boolean turnOnTimer) {
@@ -28,7 +28,6 @@ public class UpdateCurrency extends TimerTask {
     public void run() {
         CurrencyData currencyData = new CurrencyData();
         currencyEntities = currencyData.parseJson();
-        System.out.println(currencyEntities);
     }
 
     public static Optional<CurrencyEntity> searchCurrencyByBaseCCY(String name) {

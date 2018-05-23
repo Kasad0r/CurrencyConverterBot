@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class CurrencyData {
+final public class CurrencyData {
 
     public String getJsonFromSite() {
         StringBuilder jsonString = new StringBuilder();
@@ -28,7 +28,7 @@ public class CurrencyData {
 
     public List<CurrencyEntity> parseJson() {
         String jsonString = getJsonFromSite();
-        List<CurrencyEntity> result = new ArrayList<CurrencyEntity>();
+        List<CurrencyEntity> result = new ArrayList<>();
         JsonParser jsonParser = new JsonParser();
         JsonArray currJsonArr = (JsonArray) jsonParser.parse(jsonString);
 

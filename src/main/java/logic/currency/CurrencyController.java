@@ -7,10 +7,7 @@ import java.math.RoundingMode;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
-public class CurrencyController {
-    static {
-
-    }
+final public class CurrencyController {
 
 
     public static void main(String[] args) {
