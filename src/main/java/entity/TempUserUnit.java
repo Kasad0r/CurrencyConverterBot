@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TempUserUnit {
+final public class TempUserUnit implements Comparable<TempUserUnit> {
     private long userId;
     private BigDecimal value;
     private List<CurrencyEntity> currencyToConvert;
@@ -15,6 +15,10 @@ public class TempUserUnit {
         this.value = value;
         this.currencyToConvert = currencyToConvert;
         this.position = position;
+    }
+
+    public TempUserUnit(long userId) {
+        this.userId = userId;
     }
 
     public TempUserUnit() {
@@ -40,10 +44,10 @@ public class TempUserUnit {
         return currencyToConvert;
     }
 
-    public void setCurrencyToConvert(CurrencyEntity from,CurrencyEntity to) {
+    public void setCurrencyToConvert(CurrencyEntity from, CurrencyEntity to) {
         this.currencyToConvert = new ArrayList<>();
-        this.currencyToConvert.add(0,from);
-        this.currencyToConvert.add(1,to);
+        this.currencyToConvert.add(0, from);
+        this.currencyToConvert.add(1, to);
     }
 
     public Position getPosition() {
@@ -62,5 +66,11 @@ public class TempUserUnit {
                 ", currencyToConvert=" + currencyToConvert +
                 ", position=" + position +
                 '}';
+    }
+
+
+    @Override
+    public int compareTo(TempUserUnit o) {
+        return Long.compare(this.userId, o.userId);
     }
 }
