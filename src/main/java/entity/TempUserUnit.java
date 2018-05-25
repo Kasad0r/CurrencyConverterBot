@@ -8,7 +8,7 @@ final public class TempUserUnit implements Comparable<TempUserUnit> {
     private long userId;
     private BigDecimal value;
     private List<CurrencyEntity> currencyToConvert;
-    private Position position = Position.MAINMENU;
+    private Position position = Position.GENERALMENU;
 
     public TempUserUnit(long userId, BigDecimal value, List<CurrencyEntity> currencyToConvert, Position position) {
         this.userId = userId;

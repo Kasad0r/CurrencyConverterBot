@@ -1,6 +1,6 @@
 package entity;
 
 public enum Position {
-    MAINMENU,
+    GENERALMENU,
     CURRENCYCHOICEMENU
 }
