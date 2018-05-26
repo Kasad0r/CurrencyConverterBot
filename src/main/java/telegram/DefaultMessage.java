@@ -1,4 +1,4 @@
-package telegram.menus;
+package telegram;
 
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 

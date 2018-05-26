@@ -22,7 +22,7 @@ final public class UserController {
         userList.parallelStream().filter(f -> f.getUserId() == userId).forEach(itm -> userList.remove(itm));
     }
 
-    public TempUserUnit find(long userId) {
+    public static TempUserUnit find(long userId) {
         return userList.stream().filter(f -> f.getUserId() == userId).findFirst().get();
     }
 }

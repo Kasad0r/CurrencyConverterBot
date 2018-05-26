@@ -8,8 +8,7 @@ import java.util.List;
 
 public interface Menu {
 
-    List<String> commandList = new ArrayList<>(
-    );
+    List<String> commandList = new ArrayList<>();
 
     SendMessage push(Message message);
 
