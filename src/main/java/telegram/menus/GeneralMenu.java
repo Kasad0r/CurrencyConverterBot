@@ -38,6 +38,12 @@ public class GeneralMenu implements Menu {
     public SendMessage perform(Message message) {
         if (!checkCommand(message.getText())) {
             return DefaultMessage.wrongCommand(message.getChatId());
+        } else if (message.getText().equals(commandList.get(0))) {//Конвертация📈
+
+        } else if (message.getText().equals(commandList.get(1))) {//Курсы Валют📊
+
+        } else if (message.getText().equals(commandList.get(2))) {//Инфо💬
+
         }
         return null;
     }
