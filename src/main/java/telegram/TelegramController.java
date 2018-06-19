@@ -1,12 +1,20 @@
 package telegram;
 
+import entity.Trigger;
+import entity.enums.Position;
+import entity.enums.TriggeType;
 import logic.users.UserController;
+import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Update;
+import org.telegram.telegrambots.api.objects.User;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
+import org.telegram.telegrambots.exceptions.TelegramApiException;
+import telegram.menus.ConverterMenu;
+import telegram.menus.GeneralMenu;
 
 public class TelegramController extends TelegramLongPollingBot {
-    private static final String username = "";
-    private static final String token = "";
+    private static final String username = "CurrencyUaTelegrambot";
+    private static final String token = "523356545:AAFfZcPaw5vtQnFsX0LxUNAiIaMYwJ6vaH8";
     private static UserController userController = new UserController();
 
 
@@ -15,11 +23,36 @@ public class TelegramController extends TelegramLongPollingBot {
         if (update.hasMessage()) {
             long chatId = update.getMessage().getChatId();
             long userId = update.getMessage().getFrom().getId();
+            System.out.println(userId);
             userController.register(userId);
+            UserController.showList();
             if (update.getMessage().hasText()) {
                 String messageText = update.getMessage().getText();
+                if (messageText.equals("/start")) {
+                    output(new GeneralMenu().push(update.getMessage()));
+                    //--------------------------------------Main Menu---------------------------------------------------
+                } else if (UserController.find(userId).getToDo().equals(TriggeType.INPUTCURRENCYVALUE)) {
+
+                } else if (messageText.equals("Conversion\uD83D\uDCC8") &&
+                        UserController.find(userId).getPosition().equals(Position.GENERALMENU)) {
+                    UserController.find(userId).setPosition(Position.CURRENCYCHOICEMENU);
+                    output(new ConverterMenu().push(update.getMessage()));
+                } else if (messageText.equals("Exchange Rates\uD83D\uDCC8") &&
+                        UserController.find(userId).getPosition().equals(Position.GENERALMENU)) {
+
+                } else if (messageText.equals("Back")) {
+                    output(ButtonChecker.buttonBack(update, userId));
+                }
 
             }
+        }
+    }
+
+    public static void output(SendMessage sendMessage) {
+        try {
+            new TelegramController().execute(sendMessage);
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
         }
     }
 

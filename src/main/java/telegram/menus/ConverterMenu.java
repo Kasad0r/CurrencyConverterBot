@@ -1,7 +1,7 @@
 package telegram.menus;
 
 import entity.TempUserUnit;
-import enums.TriggeType;
+import entity.enums.TriggeType;
 import logic.users.UserController;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Message;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import entity.Flag;
+import entity.emoji.Flag;
 import telegram.DefaultMessage;
 
 public class ConverterMenu implements Menu {
@@ -22,7 +22,7 @@ public class ConverterMenu implements Menu {
     @Override
     public SendMessage push(Message message) {
         SendMessage sendMessage = new SendMessage();
-        sendMessage.setText("Выберите валюту для обмена");
+            sendMessage.setText("Select currency for exchange:");
         sendMessage.setChatId(message.getChatId());
         ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
         KeyboardRow row1 = new KeyboardRow();
@@ -38,8 +38,9 @@ public class ConverterMenu implements Menu {
         row3.add(String.format("%s-%s", Flag.RU, Flag.UA));
         row4.add(String.format("%s-%s", Flag.BTC, Flag.US));
         row4.add(String.format("%s-%s", Flag.US, Flag.BTC));
-        row5.add("Заново");
+        row5.add("Back");
         replyKeyboardMarkup.setKeyboard(Arrays.asList(row1, row2, row3, row4, row5));
+        sendMessage.setReplyMarkup(replyKeyboardMarkup);
         return sendMessage;
     }
 
@@ -48,7 +49,7 @@ public class ConverterMenu implements Menu {
         TempUserUnit userUnit = UserController.find(message.getFrom().getId());
         if (userUnit.getToDo().getTriggerType() == TriggeType.NONE) {
             SendMessage sendMessage = new SendMessage();
-            sendMessage.setText("Сколько нужно обменять: ");
+            sendMessage.setText("How much should I exchange: ");
             UserController.find(message.getFrom().getId()).getToDo().setTriggerType(TriggeType.INPUTCURRENCYVALUE);
             sendMessage.setChatId(message.getChatId());
             return sendMessage;
@@ -57,7 +58,6 @@ public class ConverterMenu implements Menu {
                 UserController.find(message.getFrom().getId()).setValue(new BigDecimal(message.getText()));
             } catch (Exception e) {
                 UserController.find(message.getFrom().getId()).getToDo().setTriggerType(TriggeType.NONE);
-                perform(message);
             }
             push(message);
         } else {

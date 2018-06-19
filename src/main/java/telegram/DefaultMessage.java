@@ -6,21 +6,21 @@ public class DefaultMessage {
     public static SendMessage nothingFind(long chatId) {
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(chatId);
-        sendMessage.setText("Ничего не нашлось\uD83D\uDE2E");
+        sendMessage.setText("Nothing was found\uD83D\uDE2E");
         return sendMessage;
     }
 
     public static SendMessage wrongCommand(long chatId) {
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(chatId);
-        sendMessage.setText("Не верная команда, выберите пункты с клавиатуры!⌨️");
+        sendMessage.setText("Invalid command, select items from the keyboard!");
         return sendMessage;
     }
 
     public static SendMessage wrongCurrency(long chatId) {
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(chatId);
-        sendMessage.setText("Введена неверная валюта!");
+        sendMessage.setText("The wrong currency is entered!");
         return sendMessage;
     }
 

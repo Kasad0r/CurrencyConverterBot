@@ -1,4 +1,4 @@
-package enums;
+package entity.enums;
 
 public enum Position {
     GENERALMENU,

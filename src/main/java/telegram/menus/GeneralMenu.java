@@ -13,9 +13,9 @@ import java.util.List;
 public class GeneralMenu implements Menu {
 
     private List<String> commandList = new ArrayList<>(Arrays.asList(
-            "Конвертация\uD83D\uDCC8",
-            "Курсы Валют\uD83D\uDCCA",
-            "Инфо\uD83D\uDCAC"));
+            "Conversion\uD83D\uDCC8",
+            "Exchange Rate\uD83D\uDCCA",
+            "Info\uD83D\uDCAC"));
 
     @Override
     public SendMessage push(Message message) {
@@ -24,13 +24,14 @@ public class GeneralMenu implements Menu {
         KeyboardRow row1 = new KeyboardRow();
         KeyboardRow row2 = new KeyboardRow();
         KeyboardRow row3 = new KeyboardRow();
-        row1.add("<b>Конвертация</b>\uD83D\uDCC8");
-        row2.add("<b>Курсы Валют</b>\uD83D\uDCCA");
-        row3.add("<b>Инфо</b>\uD83D\uDCAC");
+        sendMessage.setParseMode("html");
+        row1.add("Conversion\uD83D\uDCC8");
+        row2.add("Exchange Rates\uD83D\uDCCA");
+        row3.add("Info\uD83D\uDCAC");
         replyKeyboardMarkup.setKeyboard(Arrays.asList(row1, row2, row3));
         sendMessage.setReplyMarkup(replyKeyboardMarkup);
-        sendMessage.setText("Главное меню: ");
-        sendMessage.enableHtml(true);
+        sendMessage.setText("General menu: ");
+        sendMessage.setChatId(message.getChatId());
         return sendMessage;
     }
 

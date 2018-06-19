@@ -8,12 +8,17 @@ import java.util.List;
 final public class UserController {
     private static List<TempUserUnit> userList = new ArrayList<>();
 
+    public static void showList(){
+        System.out.println(userList);
+    }
+
     private boolean checkUser(long userId) {
         return userList.stream().anyMatch(f -> f.getUserId() == userId);
     }
 
     public void register(long userId) {
-        if (checkUser(userId)) {
+        if (!checkUser(userId)) {
+            System.out.println("Must register "+ userId);
             userList.add(new TempUserUnit(userId));
         }
     }

@@ -1,10 +1,14 @@
-import logic.currency.CurrencyController;
+
 import logic.currency.UpdateCurrency;
+import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.TelegramBotsApi;
 import org.telegram.telegrambots.exceptions.TelegramApiRequestException;
 import telegram.TelegramController;
 
 public class Main {
+    static {
+        ApiContextInitializer.init();
+    }
     public static void main(String[] args) {
         final UpdateCurrency updateCurrency = new UpdateCurrency(true);
         TelegramBotsApi botsApi = new TelegramBotsApi();

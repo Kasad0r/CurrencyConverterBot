@@ -1,4 +1,4 @@
-package entity;
+package entity.emoji;
 
 public class Flag {
     public static String UA = "\uD83C\uDDFA\uD83C\uDDE6";

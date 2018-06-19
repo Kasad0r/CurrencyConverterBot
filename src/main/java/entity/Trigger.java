@@ -1,6 +1,6 @@
 package entity;
 
-import enums.TriggeType;
+import entity.enums.TriggeType;
 
 public class Trigger {
     private long userId;
