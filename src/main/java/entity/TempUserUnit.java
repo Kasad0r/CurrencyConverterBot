@@ -1,6 +1,8 @@
 package entity;
 
+import entity.emoji.Conversion;
 import entity.enums.Position;
+import entity.enums.TriggeType;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -9,9 +11,9 @@ import java.util.Objects;
 final public class TempUserUnit implements Comparable<TempUserUnit> {
     private long userId;
     private BigDecimal value;
-    private List<CurrencyEntity> currencyToConvert;
+    private String currencyToConvert;
     private Position position = Position.GENERALMENU;
-    private Trigger toDo;
+    private TriggeType triggerType = TriggeType.NONE;
 
     public TempUserUnit(long userId) {
         this.userId = userId;
@@ -20,12 +22,12 @@ final public class TempUserUnit implements Comparable<TempUserUnit> {
     public TempUserUnit() {
     }
 
-    public TempUserUnit(long userId, BigDecimal value, List<CurrencyEntity> currencyToConvert, Position position, Trigger toDo) {
+    public TempUserUnit(long userId, BigDecimal value,String currencyToConvert, Position position, TriggeType triggeType) {
         this.userId = userId;
         this.value = value;
         this.currencyToConvert = currencyToConvert;
         this.position = position;
-        this.toDo = toDo;
+        this.triggerType = triggeType;
     }
 
     public long getUserId() {
@@ -44,11 +46,11 @@ final public class TempUserUnit implements Comparable<TempUserUnit> {
         this.value = value;
     }
 
-    public List<CurrencyEntity> getCurrencyToConvert() {
+    public String getCurrencyToConvert() {
         return currencyToConvert;
     }
 
-    public void setCurrencyToConvert(List<CurrencyEntity> currencyToConvert) {
+    public void setCurrencyToConvert(String currencyToConvert) {
         this.currencyToConvert = currencyToConvert;
     }
 
@@ -60,12 +62,12 @@ final public class TempUserUnit implements Comparable<TempUserUnit> {
         this.position = position;
     }
 
-    public Trigger getToDo() {
-        return toDo;
+    public TriggeType getTriggerType() {
+        return triggerType;
     }
 
-    public void setToDo(Trigger toDo) {
-        this.toDo = toDo;
+    public void setTriggerType(TriggeType toDo) {
+        this.triggerType = toDo;
     }
 
     @Override
@@ -75,7 +77,7 @@ final public class TempUserUnit implements Comparable<TempUserUnit> {
                 ", value=" + value +
                 ", currencyToConvert=" + currencyToConvert +
                 ", position=" + position +
-                ", toDo=" + toDo +
+                ", TruggerType=" + triggerType +
                 '}';
     }
 
@@ -88,13 +90,13 @@ final public class TempUserUnit implements Comparable<TempUserUnit> {
                 Objects.equals(value, that.value) &&
                 Objects.equals(currencyToConvert, that.currencyToConvert) &&
                 position == that.position &&
-                Objects.equals(toDo, that.toDo);
+                Objects.equals(triggerType, that.triggerType);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(userId, value, currencyToConvert, position, toDo);
+        return Objects.hash(userId, value, currencyToConvert, position, triggerType);
     }
 
     @Override

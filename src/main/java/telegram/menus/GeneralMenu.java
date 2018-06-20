@@ -10,14 +10,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class GeneralMenu implements Menu {
+public class GeneralMenu {
 
     private List<String> commandList = new ArrayList<>(Arrays.asList(
             "Conversion\uD83D\uDCC8",
             "Exchange Rate\uD83D\uDCCA",
             "Info\uD83D\uDCAC"));
 
-    @Override
     public SendMessage push(Message message) {
         SendMessage sendMessage = new SendMessage();
         ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
@@ -35,7 +34,6 @@ public class GeneralMenu implements Menu {
         return sendMessage;
     }
 
-    @Override
     public SendMessage perform(Message message) {
         if (!checkCommand(message.getText())) {
             return DefaultMessage.wrongCommand(message.getChatId());
@@ -43,7 +41,7 @@ public class GeneralMenu implements Menu {
         return null;
     }
 
-    @Override
+
     public boolean checkCommand(String command) {
         return commandList.stream().anyMatch(f -> f.equals(command));
     }
