@@ -1,10 +1,12 @@
 <application>
   <component name="FileTypeManager" version="17">
     <extensionMap>
+      <mapping pattern="V1__Init_DB.sql" type="PLAIN_TEXT" />
       <mapping pattern="text" type="PLAIN_TEXT" />
       <mapping pattern="sad" type="PLAIN_TEXT" />
       <mapping pattern="LICENSE" type="PLAIN_TEXT" />
       <mapping ext="ser" type="PLAIN_TEXT" />
+      <mapping pattern="V1__Init_DB" type="SQL" />
       <mapping pattern="web" type="XML" />
     </extensionMap>
   </component>
